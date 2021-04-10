@@ -1,0 +1,25 @@
+# Run with
+# docker run --rm -it --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" -p 8080:8080 --env JEKYLL_ENV=production jekyll/jekyll:3.8 jekyll serve --watch --livereload --port 8080
+
+title: Soenderblog
+baseurl: ""
+url: "https://www.soender.blog"
+twitter_username: jsoendermann
+github_username:  jsoendermann
+permalink: /:title/
+
+excerpt_separator: <!--break-->
+
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+head_char: 懿
+tagline: "Shelter In Place"
+primary_color: "#2caae6"
+
+
+# Design Inspiration
+# https://somehowmanage.com/2020/09/13/disrespectful-design-users-arent-stupid-or-lazy/

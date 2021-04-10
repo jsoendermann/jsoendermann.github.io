@@ -1,0 +1,313 @@
+
+:root {
+  --font-color: rgb(48, 48, 48);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 1.15rem;
+  font-family: 'Inconsolata', monospace;
+  line-height: 1.7;
+  color: var(--font-color);
+  -webkit-font-smoothing: antialiased;
+  
+  background-color: #fcfcfc;
+
+  /* box-sizing: border-box; */
+  
+  min-height: 100vh;
+
+  /* margin-top: 5rem; */
+ 
+
+  /* border: 6px solid fuchsia; */
+}
+
+.page-container {
+  padding: 2.5rem;
+}
+
+p {
+  font-family: 'PT Sans', sans-serif;
+}
+
+article {
+  font-family: 'PT Sans', sans-serif;
+}
+
+.posts-header {
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 0.3rem solid #ff00ff;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+
+
+main {
+  /* border-left: 1px solid #aaa; */
+  margin-bottom: 3rem;
+}
+
+header {
+  /* grid-area: logo; */
+
+  /* display: flex; */
+  /* align-items: center; */
+  
+  margin-bottom: 5rem;
+}
+
+header > aside {
+  /* grid-area: menu; */
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 3rem;
+}
+
+nav {
+  display: flex;
+}
+
+nav a {
+  margin-right: 1rem;
+}
+
+nav a:visited {
+  color: #ff00ff;
+}
+
+aside a {
+  text-decoration: none;
+  /* font-size: 1.3rem; */
+}
+
+body > main {
+  grid-area: content;
+}
+
+
+.short-bio {
+  margin-bottom: 5rem;
+}
+
+.hero {
+  font-size: 2.75rem;
+  color: #222;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.hero:visited {
+  color: #222;
+}
+
+
+
+
+
+.title {
+
+  text-decoration: none;
+  
+  font-weight: 900;
+  font-size: 3.5rem;
+  margin-bottom: 0rem;
+}
+
+@media(max-width: 46rem) {
+  .title {
+    display: none;
+  }
+}
+
+
+/* .title:visited {
+  color: #666;
+} */
+
+
+
+a {
+  color: #ff00ff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #8a008a;
+}
+
+a:hover {
+  /* background: linear-gradient(90deg, rgba(140,35,26,1) 0%, rgba(94,71,108,1) 50%, rgba(0,181,194,1) 100%); */
+  /* background-size: cover; */
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
+  /* color: #ff80ff; */
+  text-decoration: underline;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0;
+  /* font-size: 70%; */
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+/* 
+h1 {
+  /* font-family: 'Alegreya Sans', Arial, Helvetica, sans-serif; */
+  /* font-weight: 800;
+  font-size: 2.2rem;
+} */
+
+/* h2 {
+  font-weight: 800;
+}  */
+
+.post-list-row {
+  margin-bottom: 0.8rem;
+}
+
+.post-list-link {
+  /* font-size: 1.35rem; */
+  text-decoration: none;
+  /* border-bottom: 1px solid black; */
+  position: relative;
+  color: #ff00ff;
+  /* margin-bottom: 0.1rem; */
+}
+
+.post-list-date {
+  font-size: 0.9rem;
+  /* margin-left: 1rem; */
+  color: #999;
+  /* white-space: nowrap; */
+
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer .text {
+  font-size: 0.8rem;
+  color: #999;
+
+  margin-bottom: 1rem;
+}
+
+footer img {
+  /* width: 3rem; */
+  height: 3rem;
+  opacity: 0.2;
+  /* transform: rotateY(180deg); */
+}
+
+.post-header h1 {
+  font-family: 'Inconsolata', monospace;
+  display: block;
+  padding-bottom: 0;
+  margin-bottom: 0rem;
+}
+
+.date {
+  display: block;
+  color: #aaa;
+  margin-bottom: 2rem;
+  font-family: 'Inconsolata', monospace;
+}
+
+main img {
+
+  max-width: 100%;
+
+  align-self: center;
+
+  margin: 30px auto 30px auto;
+
+
+  border-radius: 3px;
+
+  box-shadow: 0px 4px 39px -8px rgba(0,0,0,0.34);
+}
+
+main img:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+main img + em {
+  font-size: 1.15rem;
+  color: #666;
+  text-align: center;
+  display: block;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+@media(min-width: 48rem) {
+  body {
+    /* border: 10px solid fuchsia; */
+  }
+  .page-container {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-left: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+    padding: 2.5rem 3rem;
+
+  }
+
+  .post-list-row {
+    margin-bottom: 0.3rem;
+  }
+}
+
+.tag-link {
+  font-size: 1.5rem;
+}

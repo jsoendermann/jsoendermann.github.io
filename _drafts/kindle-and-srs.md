@@ -1,0 +1,4 @@
+- copy highlights from kindle
+- clozes?
+- break down further?
+- goal is to memorize? or to expose without clear recollection goals

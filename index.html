@@ -1,0 +1,20 @@
+---
+layout: page
+---
+
+<div class="short-bio">
+  <h1>Hi. I'm Jan.</h1>
+
+  <p>I'm a software developer living in London. Before coming back to the UK, I lived in Taipei and Beijing. This is where I blog about my interests and discoveries.</p>
+
+  <p>If you want to learn more about me, take a look at <a href="/about">the about page</a>. To stay in touch, follow me <a href="https://twitter.com/jsoendermann">on Twitter</a>.</p> 
+</div>
+
+<h1 class="posts-header">Posts</h1>
+
+{% for post in site.posts %}
+  <div class="post-list-row">
+    <a class="post-list-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <span class="post-list-date">{{ post.date | date_to_string }}</span>
+  </div>
+{% endfor %}

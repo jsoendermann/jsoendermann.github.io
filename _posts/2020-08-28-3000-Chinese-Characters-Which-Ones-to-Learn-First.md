@@ -1,0 +1,27 @@
+---
+layout: post
+title: "3000 Chinese Characters: Which Ones to Learn First?"
+tags: chinese learning
+---
+[This paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163623) with the pithy title of "Optimizing the Learning Order of Chinese Characters Using a Novel Topological Sort Algorithm" fell into my hands again the other day and I want to jot down some of my thoughts on it. It deals with the question of what order to learn Chinese characters in.
+
+There are two approaches considered in the paper:
+
+- Learning more common characters first. This is desirable because you learn the characters in order of usefulness. This is generally how you pick grammar structures and words to learn so learning characters in this way makes them correspond to how you learn the rest of the language. It's also how all text books in widespread use in language education order the characters they teach. In the paper, they call this **frequency ordering**.
+- Learning characters in a way that ensures you learn components before you learn composite characters. If you learn Mandarin in Taiwan, 灣 (the "wan" in "Taiwan") is going to be a very useful character. It's also a character with 25 strokes. If you learn this character stroke by stroke, without any understanding of its structure, it's exceedingly difficult to memorize. That is exactly what I was made to do at National Taiwan University in the first semester of learning Chinese. If, however, you already know the two components that make up 灣, namely 氵 and 彎, learning the combined character is very easy. 彎 likewise can be further decomposed into its constituent parts. This suggests a learning order that starts with structurally simple, atomic characters and components with few strokes and continues by combining components into more and more complex characters. In the paper, they call this the **hierarchical ordering**. This approach was popularized by James Heisig's Remembering the Kanji.
+
+These two approaches lead to very different lists. That' because the correlation between how complex and how frequent a character is, is weak: some very simple characters are almost never used while some complex characters are among the most common ones.
+
+Both of these orderings have advantages: learning in frequency ordering means you learn characters in the order in which you're likely to encounter them. Learning in hierarchical ordering means that learning overall becomes easier because you build up your character knowledge in a way that corresponds to their structure. It's easier to first learn 言, then learn 舌 and finally learn the character formed by combining them (話) than it is to learn 話 first without knowing 言 and 舌.
+
+The paper tries to come up with an ordering that combines the advantages of both approaches. The idea is to assign a value to each character that combines its frequency with its complexity. In the paper, they call this *centrality* and define it to be the fraction of the frequency and a custom measure of character complexity. Characters are then sorted in descending order by their centrality. In the last step, the hierarchical ordering of characters is restored in a way that still takes centrality into account.
+
+For primitive components, the difficulty $$ c $$ is defined to be $$ 1 + \gamma s $$ where $$ \gamma $$ is a parameter to the algorithm and $$ s $$ is the number of strokes that make up the component. For compounds, the difficulty is defined as the number of components minus 1. In my personal experience, this doesn't capture learning difficulty very well. A potential optimization to this algorithm would be to gather learning data from people learning characters and assigning character difficulties based on that data [^1].
+
+Another thing they mention in the paper is that in the Heisig books, characters that share a component are grouped together in chapters. If I remember correctly (it's been a long time since I went through RTH 1), the book introduces a new primitive at the beginning of each chapter with the remainder of the chapter being all the new characters that can be formed using that new primitive. I remember feeling like this made things easier but the benefits of learning characters in an order that accounts for frequency might outweigh the benefits of this kind of clustering. It calls into question, however, the assumption made in the paper that all hierarchical orderings are equally difficult overall and their only difference lies in how quickly cumulative frequency grows.
+
+The paper mentions that the benefits of clustering are not realized because Heisig doesn't teach character readings. Since shared components can indicate similar readings, a clustered ordering would ostensibly strengthen these phonetic links. This is something I want to write a separate post about.
+
+What excites me the most, though, is the possibility of a learning method that gives the learner control over which characters they want to learn while still preserving a hierarchical ordering. Once I get some time (probably not for a while), I'm going to tinker with that and see what comes out. I have my own character and decomposition data from an earlier project that is waiting for me to play with it.
+
+[^1]: This would have to account for the method used to teach these characters which would affect the perceived difficulty. It also assumes that perceived difficulty correlates between learners.

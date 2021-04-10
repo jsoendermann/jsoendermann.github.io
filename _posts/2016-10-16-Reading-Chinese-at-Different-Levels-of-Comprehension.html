@@ -1,0 +1,107 @@
+---
+layout: post
+tags: chinese learning
+---
+<i>I copied this post over from the old Primlo blog on 16 July 2019. I still think it's pretty cool even though it didn't get a lot of attention back then.</i>
+
+<p>John Pasden over at sinosplice wrote a very cool <a href="http://www.sinosplice.com/life/archives/2016/10/13/simulating-80-comprehension-in-chinese">blog post</a> on simulating the experience of reading a Chinese text as a second language learner for people who can read Chinese fluently. The idea is to a certain percentage of characters in a text with very obscure characters so rare that even native speakers don't know them. I thought it would be cool to be able to play around with different texts and difficulties so I hacked together <a href="https://github.com/jsoendermann/chinese-comprehension">a little bit of JavaScript</a> which you can try out below. If you have font problems, try installing <a href="https://www.google.com/get/noto/help/cjk/">Google Noto</a>.<p>
+
+<!--break-->
+
+<script type="text/javascript">
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// From http://stackoverflow.com/questions/21109011/javascript-unicode-string-chinese-character-but-no-punctuation
+var CJK_REGEX = new RegExp('[\u4E00-\u9FCC\u3400-\u4DB5\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|\n[\uD840-\uD868][\uDC00-\uDFFF]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\n[\uD86A-\uD86C][\uDC00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D]');
+
+var OBSCURE_CHARACTERS = ['𫟅', '𫟰', '𫠆', '𫠊', '𫘨', '𫗧', '𫖳', '𫖮', '𫖯', '𫔶', '𫓶', '𫐐', '𫍣', '𫍲', '𫌀', '𫇭', '𫄷', '𫄧', '𫄨', '𫄸', '𪟝', '𪣻', '𪊺', '𨠄', '𨛺', '𨚪', '𨚫', '𨐈', '𧴯', '𧯯', '𠸑', '𡊰', '𡋣', '𡋤', '𡛀', '𡛁', '𡚴', '𡟃', '𡟙', '𡟛', '𡟜', '𢁾', '𢃇', '𢃼', '𢑥', '𢒋', '𢓁', '𢓭', '𢘉', '𣂷'];
+
+// From http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
+function shuffle(array) {
+    var currentIndex = array.length,
+        temporaryValue,
+        randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+var Text = function () {
+    function Text(originalText) {
+        _classCallCheck(this, Text);
+
+        this.originalText = originalText;
+
+        var chineseCharacterIndices = [];
+        originalText.split('').map(function (char, index) {
+            if (CJK_REGEX.test(char)) {
+                chineseCharacterIndices.push(index);
+            }
+        });
+
+        shuffle(chineseCharacterIndices);
+
+        this.substitutions = chineseCharacterIndices.map(function (index) {
+            return {
+                index: index,
+                substitutionCharacter: OBSCURE_CHARACTERS[Math.floor(Math.random() * OBSCURE_CHARACTERS.length)]
+            };
+        });
+    }
+
+    _createClass(Text, [{
+        key: 'textAtComprehensionLevel',
+        value: function textAtComprehensionLevel(percentComprehension) {
+            var numberOfSubstitutedChars = (1 - percentComprehension) * this.substitutions.length;
+            var substitutions = this.substitutions.slice(0, numberOfSubstitutedChars);
+
+            var textArray = this.originalText.split('');
+            substitutions.forEach(function (_ref) {
+                var index = _ref.index;
+                var substitutionCharacter = _ref.substitutionCharacter;
+
+                textArray[index] = substitutionCharacter;
+            });
+
+            return textArray.join('');
+        }
+    }]);
+
+    return Text;
+}();
+
+
+const t = '汉字，又称中文字、华文字、唐话字，是汉字文化圈广泛使用的一种文字，为世界上独有的一种指示会意文字体系，也是世界上唯一仍被广泛使用并高度发展的语素文字，由中国上古时代的汉族先民所发明创制，其字体也历经过长久改进及演变。\n当前确切历史，可追溯至约公元前1300年商朝的甲骨文、籀文、金文，再到春秋战国与秦朝的籀文、小篆，发展至汉朝隶变，产生隶书、草书以及楷书（以及派生的行书），至唐代楷化为今日所用的手写字体标准——正楷，也是今日普遍使用的现代汉字。'
+
+window.comprehensionText = new Text(t);
+</script>
+
+<textarea id="text" style="width: 100%; border: 1px solid #cccccc; border-radius: 4px; font-size: 18pt; padding: 1rem; color: #606060; margin-bottom: 1.5rem;" rows="8" class="form-control" onkeyup="window.comprehensionText = new Text(document.getElementById('text').value);var v = document.getElementById('range').value; document.getElementById('text-out').innerText = window.comprehensionText.textAtComprehensionLevel(v/100); document.getElementById('span').innerText = v + '% comprehension'">汉字，又称中文字、华文字、唐话字，是汉字文化圈广泛使用的一种文字，为世界上独有的一种指示会意文字体系，也是世界上唯一仍被广泛使用并高度发展的语素文字，由中国上古时代的汉族先民所发明创制，其字体也历经过长久改进及演变。
+  
+当前确切历史，可追溯至约公元前1300年商朝的甲骨文、籀文、金文，再到春秋战国与秦朝的籀文、小篆，发展至汉朝隶变，产生隶书、草书以及楷书（以及派生的行书），至唐代楷化为今日所用的手写字体标准——正楷，也是今日普遍使用的现代汉字。</textarea>
+
+<br />
+
+<input style="width: 50%; margin-bottom: 2.5rem;" id="range" type="range" min=0 max=100 value=100 onchange="var v = document.getElementById('range').value; document.getElementById('text-out').innerText = window.comprehensionText.textAtComprehensionLevel(v/100); document.getElementById('span').innerText = v + '% comprehension'" oninput="var v = document.getElementById('range').value; document.getElementById('text-out').innerText = window.comprehensionText.textAtComprehensionLevel(v/100); document.getElementById('span').innerText = v + '% comprehension'">
+
+<span style="font-weight: bold;" id="span">100% comprehension</span>
+
+<div id="text-out" style='font-size: 25pt; line-height: 150%; font-family: "Noto Sans", "Noto Sans CJK CN", sans-serif;'>
+汉字，又称中文字、华文字、唐话字，是汉字文化圈广泛使用的一种文字，为世界上独有的一种指示会意文字体系，也是世界上唯一仍被广泛使用并高度发展的语素文字，由中国上古时代的汉族先民所发明创制，其字体也历经过长久改进及演变。<br />
+当前确切历史，可追溯至约公元前1300年商朝的甲骨文、籀文、金文，再到春秋战国与秦朝的籀文、小篆，发展至汉朝隶变，产生隶书、草书以及楷书（以及派生的行书），至唐代楷化为今日所用的手写字体标准——正楷，也是今日普遍使用的现代汉字。
+</div>
