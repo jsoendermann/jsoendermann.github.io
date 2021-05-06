@@ -10,7 +10,20 @@ layout: page
   <p>If you want to learn more about me, take a look at <a href="/about">the about page</a>. To stay in touch, follow me <a href="https://twitter.com/jsoendermann">on Twitter</a>.</p> 
 </div>
 
-<h1 class="posts-header">Posts</h1>
+<div class="greatest-hits">
+  <h1 class="posts-header">Greatest Hits</h1>
+
+  {% for post in site.posts %}
+    {% if post.tags contains "greatest-hits" %}
+      <div class="post-list-row">
+        <a class="post-list-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-list-date">{{ post.date | date_to_string }}</span>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<h1 class="posts-header">All Posts</h1>
 
 {% for post in site.posts %}
   <div class="post-list-row">

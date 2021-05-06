@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "3000 Chinese Characters: Which Ones to Learn First?"
-tags: chinese learning
+tags: chinese learning greatest-hits
 ---
 [This paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0163623) with the pithy title of "Optimizing the Learning Order of Chinese Characters Using a Novel Topological Sort Algorithm" fell into my hands again the other day and I want to jot down some of my thoughts on it. It deals with the question of what order to learn Chinese characters in.
 

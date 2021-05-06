@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: random
+tags: random greatest-hits
 title: "Speaking Knots"
 ---
 ![door]({{ '/images/knots/door.jpg' | relative_url}})

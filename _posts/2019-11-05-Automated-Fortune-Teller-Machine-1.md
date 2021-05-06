@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Automated Fortune Teller Machine – The First"
-tags: compsci raspberrypi
+tags: compsci raspberrypi greatest-hits
 ---
 <img style="max-width: 50%; float: left; margin-right: 2rem; margin-top: 0;" src="{{ '/images/aftm/hero.jpg' | relative_url}}">
 
