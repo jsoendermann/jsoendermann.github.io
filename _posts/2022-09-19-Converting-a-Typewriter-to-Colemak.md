@@ -5,6 +5,7 @@ tags: greatest-hits random
 
 ![countdown]({{ '/images/typewriter/sp66.jpg' | relative_url}})
 *Splendid!*
+
 As part of a larger project to reduce my dependence on modern technology and rebuild my attention span, I recently bought a typewriter. Keeping my phone away from myself as much as possible has made me happier so why shouldn't it also work to replace my computer? The idea is to do my morning pages with it, maybe take it to the park with an idea and see what else can be typed on it. After spending some money on ebay, I fell in love with an Olympia Splendid 66. It's a small and portable typewriter with a cool 60s aesthetic. The machine I bought is not the cleanest, smells of attic and had a broken margin release (that's the key with the four dots that lets you type past the margins which you can set on the back of the typewriter) but overall it's working fine.
 
 This would be all I'd have to say on this project at this point were it not for the fact that for the last 15 years, I've been using [Colemak](https://colemak.com/), an alternative keyboard layout. I lost the ability to type on qwerty layouts a long time ago. Unfortunately, Colemak was invented in 2006, long after typewriters stopped being manufactured. Initially, I considered getting an electric typewriter and rewiring it. That would've been a fun project too but there's something about going completely mechanical that appealed to me.
