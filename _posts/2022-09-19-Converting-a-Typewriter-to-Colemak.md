@@ -22,7 +22,7 @@ I did some more research online but eventually realised that I had to strike whi
 This worked fairly well, the main problem I had was that when soldering, the type slugs would move as I touched them with my solder. Eventually, I figured out the right way to do it by having the solder touch the top of the typebar and have it flow down into the space between the slug and the bar. Still, it took me four attempts to get my 'f' slug in roughly the right place.
 
 ![countdown]({{ '/images/typewriter/ws2.jpg' | relative_url}})
-*My workspace!*
+*My workspace*
 
 The whole operation took me an extended weekend (it's a bank holiday for the queen's funeral in the UK today) and I'm pretty happy with the result. Most of the keys are pretty well aligned, the only two that stick out a little bit are 'n' and 'j' but I don't mind the extra funkiness.
 
